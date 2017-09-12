@@ -6,8 +6,8 @@
 
 
 /* 
-Created By Franco Lin on 20170912
-run this program using the console pauser or add your own getch, system("pause") or input loop 
+ * Created By Franco Lin on 20170912
+ * run this program using the console pauser or add your own getch, system("pause") or input loop 
 */
 
 struct DatagramHeader
@@ -353,7 +353,7 @@ int main(int argc, char** argv) {
 	
 		fread(text,sizeof(char),len,file);
 				
-		//determine Sample OR NMEA  from 13'sByte if NMEA's first char "$" 				
+		//determine Sample OR NMEA  from the 13's Byte if NMEA's first char "$" 				
 		if (text[12] != '$'){           // Sample Datagram 
 			SampleDatagram *sd = (SampleDatagram *)malloc(sizeof(text));
 			memcpy(sd,(void *)text,len);
