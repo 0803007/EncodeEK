@@ -349,16 +349,15 @@ int main(int argc, char** argv) {
 	//for (int i=0;i<10;i++){
 	while( !feof(file)){
 		fread(&len,sizeof(long),1,file); 
-		//printf("%d\n", len);
 		char text[len];
 	
 		fread(text,sizeof(char),len,file);
 				
-		//判斷是否為Sample或是NMEA   第13個Byte 藉由NMEA的一個字元 				
+		//determine Sample OR NMEA  from 13'sByte if NMEA's first char "$" 				
 		if (text[12] != '$'){           // Sample Datagram 
 			SampleDatagram *sd = (SampleDatagram *)malloc(sizeof(text));
 			memcpy(sd,(void *)text,len);
-			if (sd->DgHeader.DatagramType == 811024722){   //判斷TYPE是否為811024722  不是就已經倒底了 
+			if (sd->DgHeader.DatagramType == 811024722){   //determine the TYPE is the value "811024722"   
 				saveSampleDatagram(output, sd);
 			}
 			else{
