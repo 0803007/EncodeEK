@@ -275,9 +275,6 @@ int main(int argc, char** argv) {
 	long Offset; // First sample
 	long Count; // Number of samples		
 	
-	//static char Text[40-28]; 
-	//static char Text2[31336];
-	
 	if(argc < 3 || argc > 4)
 	{ 
 		printf("The correct format is: EncodeEK input output \n");
